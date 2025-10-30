@@ -4,13 +4,13 @@
 #include "point3d.h"
 #include <random>
 
-class TorPointGenerator {
+class TorusPointGenerator {
     double R_;
     double r_;
     std::mt19937 gen_;
 
     public:
-    TorPointGenerator(double R, double r);
+    TorusPointGenerator(double R, double r);
     point3d rnd();
     double getR() const;
     double getr() const;
