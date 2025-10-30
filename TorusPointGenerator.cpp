@@ -2,6 +2,9 @@
 #include <fstream>
 #include <cmath>
 
+#ifndef M_PI
+#define M_PI 3.14159265358979323846  ///< Число Пи, если не определено в системе
+#endif
 /**
  * @brief Конструктор класса TorusPointGenerator
  * @param R Расстояние от центра тора до центра трубы
