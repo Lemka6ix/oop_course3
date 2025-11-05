@@ -26,7 +26,7 @@
 int main() {
     // Ввод параметров тора
     double R, r;
-    std::cout << "Введите параметры тора (R и r): ";
+    std::cout << "Enter torus parameters (R and r): ";
     std::cin >> R >> r;
 
     /// Создание генератора точек с заданными параметрами
@@ -35,7 +35,7 @@ int main() {
 
     // Ввод количества точек для генерации
     int K;
-    std::cout << "Введите количество точек K: ";
+    std::cout << "Enter the number of points K: ";
     std::cin >> K;
 
     /// Вектор для хранения сгенерированных точек
@@ -57,25 +57,25 @@ int main() {
      */
     int choice;
     do {
-        std::cout << "\n1. Вывести точку\n2. Вывести координату\n3. Добавить точку\n4. Сохранить в файл\n5. Визуализировать\n0. Выход\nВыберите: ";
+        std::cout << "\n1. Output point\n2. Output coordinate\n3. Add point\n4. Save to file\n5. Visualize\n0. Exit\nSelect: ";
         std::cin >> choice;
         
         /// @brief Обработка вывода полных координат точки
         if (choice == 1) {
             int index;
-            std::cout << "Введите индекс точки: ";
+            std::cout << "Enter the point index: ";
             std::cin >> index;
             if (index >= 0 && index < points.size()) {
                 points[index].print();
             } else {
-                std::cout << "Неверный индекс!" << std::endl;
+                std::cout << "Incorrent index!" << std::endl;
             }
         } 
         /// @brief Обработка вывода конкретной координаты точки
         else if (choice == 2) {
             int index;
             char coord;
-            std::cout << "Введите индекс точки и координату (x, y, z): ";
+            std::cout << "Enter the point index and coordinate (x, y, z): ";
             std::cin >> index >> coord;
             if (index >= 0 && index < points.size()) {
                 switch (coord) {
@@ -84,13 +84,13 @@ int main() {
                     case 'z': std::cout << points[index].getBackZ() << std::endl; break;
                 }
             } else {
-                std::cout << "Неверный индекс!" << std::endl;
+                std::cout << "Incorrent index!" << std::endl;
             }
         } 
         /// @brief Обработка добавления новой точки с ручным вводом координат
         else if (choice == 3) {
             double x, y, z;
-            std::cout << "Введите координаты (x y z): ";
+            std::cout << "Enter coordinates (x y z): ";
             std::cin >> x >> y >> z;
             points.emplace_back(x, y, z);
         } 
@@ -101,7 +101,7 @@ int main() {
                 file << p.getBackX() << " " << p.getBackY() << " " << p.getBackZ() << "\n";
             }
             file.close();
-            std::cout << "Файл сохранён." << std::endl;
+            std::cout << "File saved." << std::endl;
         } 
         /// @brief Обработка визуализации точек с использованием MathGL
         else if (choice == 5) {
@@ -122,9 +122,9 @@ int main() {
             gr.Axis();
             gr.Plot(xData, yData, zData, " .b");  ///< Синие точки
             gr.WriteFrame("points.png");
-            std::cout << "Визуализация сохранена в points.png" << std::endl;
+            std::cout << "Visualization saved in points.png" << std::endl;
 #else
-            std::cout << "Визуализация не поддерживается!" << std::endl;
+            std::cout << "Visualization is not supported!" << std::endl;
 #endif
         }
     } while (choice != 0);  ///< Цикл продолжается до выбора варианта "Выход"
